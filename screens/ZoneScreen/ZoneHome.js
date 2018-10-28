@@ -142,7 +142,7 @@ export default class ZoneScreen extends React.Component {
     let zoneList = this.state.zoneDataList;
     console.log('zoneList before', zoneList.length);
     zoneList = [...zoneList, data];
-    // this.showDialog(false);
+    this.showDialog(false);
     console.log('zoneList', zoneList.length);
     this.setState({zoneDataList: zoneList});
   };
