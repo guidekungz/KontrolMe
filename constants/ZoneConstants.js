@@ -1,0 +1,4 @@
+export default {
+    TOGGLE_ADD_ZONE_DIALOG: "TOGGLE_ADD_ZONE_DIALOG",
+    ADD_ZONE_DATA: "ADD_ZONE_DATA"
+  };
