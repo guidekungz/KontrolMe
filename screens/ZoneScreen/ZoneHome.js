@@ -141,6 +141,8 @@ export default class ZoneScreen extends React.Component {
     console.log('onAddData', data);
     let zoneList = this.state.zoneDataList;
     console.log('zoneList before', zoneList.length);
+    zoneList = zoneList.filter(z => !(z.empty || z.addDataMode));
+    console.log('zoneList after filter', zoneList.length);
     zoneList = [...zoneList, data];
     this.showDialog(false);
     console.log('zoneList', zoneList.length);

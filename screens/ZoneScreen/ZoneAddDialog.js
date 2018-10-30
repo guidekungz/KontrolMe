@@ -127,6 +127,11 @@ export default class ZoneAddDialog extends React.Component {
     data.image = this.state.zoneImageUrl;
     console.log('doAddZone data', data);
     console.log('doAddZone state', this.state);
+    this.setState({
+      zoneName: '',
+      shortZoneName: '',
+      zoneImageUrl: ''
+    })
     this.props.onAddData(data);
     // "key": 1,
     // "id": 1,

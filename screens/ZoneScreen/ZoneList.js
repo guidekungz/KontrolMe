@@ -126,6 +126,7 @@ export default class ZoneList extends React.Component {
   }
 
   render() {
+    console.log('render this.props.zoneDataList', this.props.zoneDataList.length);
     return (
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.contentContainer}>
           <FlatList
