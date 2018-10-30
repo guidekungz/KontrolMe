@@ -86,16 +86,17 @@ export default class ZoneList extends React.Component {
   // };
 
   formatData = (data, numColumns) => {
-    data = addEmptyData(data);
-    const numberOfFullRows = Math.floor(data.length / numColumns);
+    let dataFormat = [...data];
+    dataFormat = addEmptyData(dataFormat);
+    const numberOfFullRows = Math.floor(dataFormat.length / numColumns);
   
-    let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+    let numberOfElementsLastRow = dataFormat.length - (numberOfFullRows * numColumns);
     while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
-      data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+      dataFormat.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
       numberOfElementsLastRow++;
     }
   
-    return data;
+    return dataFormat;
   };
   
 
