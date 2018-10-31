@@ -13,6 +13,8 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { ImagePicker, Permissions } from 'expo';
 
+import { Col, Row, Grid } from "react-native-easy-grid";
+
 
 const BUTTONS = ["Take a photo", "Choose from gallery", "Cancel"];
 const DESTRUCTIVE_INDEX = 1;
@@ -171,12 +173,18 @@ export default class ZoneAddDialog extends React.Component {
                 onChangeText={ (text) => this.setState({ shortZoneName: text }) }/>
             </Item>
           </View>
-          <Button full onPress={ () => this.openAddZoneDialog(false) }>
-            <Text>Close</Text>
-          </Button>
-          <Button full success onPress={ () => this.doAddZone() } >
-            <Text>Save</Text>
-          </Button>
+          <Grid style={{paddingTop: 50, paddingBottom: 50}}>
+            <Col>
+              <Button full onPress={ () => this.openAddZoneDialog(false) }>
+                <Text>Close</Text>
+              </Button>
+            </Col>
+            <Col>
+              <Button full success onPress={ () => this.doAddZone() } >
+                <Text>Save</Text>
+              </Button>
+            </Col>
+          </Grid>
           
       </Dialog>
     );
@@ -210,6 +218,9 @@ const styles = StyleSheet.create({
   },
   formAddPanel: {
     alignSelf: 'stretch',
+  },
+  btn: {
+    paddingTop: 50
   }
   
 });

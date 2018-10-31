@@ -30,10 +30,6 @@ const data = [
   }
 ]
 
-const BUTTONS = ["Take a photo", "Choose from gallery", "Cancel"];
-const DESTRUCTIVE_INDEX = 1;
-const CANCEL_INDEX = 2;
-
 
 export default class ZoneScreen extends React.Component {
   constructor(props) {
@@ -76,73 +72,9 @@ export default class ZoneScreen extends React.Component {
     this.setState({openAddZoneDialog: flag});
   };
 
-  pickFromGallery = async () => {
-    const permissions = Permissions.CAMERA_ROLL;
-    const { status } = await Permissions.askAsync(permissions);
-
-    console.log(permissions, status);
-    if(status === 'granted') {
-      let image = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: 'Images',
-      }).catch(error => console.log(permissions, { error }));
-      console.log(permissions, 'SUCCESS', image);
-      if(image && !image.cancelled){
-        this.setState({ zoneImageUrl: image.uri });
-      }else{
-        this.setState({ zoneImageUrl: null });
-      }
-    }
-  }
-
-  pickFromCamera = async () => {
-    const permissions = Permissions.CAMERA;
-    const { status } = await Permissions.askAsync(permissions);
-
-    console.log(permissions, status);
-    if(status === 'granted') {
-      let image = await ImagePicker.launchCameraAsync({
-        mediaTypes: 'Images',
-      }).catch(error => console.log(permissions, { error }));
-      console.log(permissions, 'SUCCESS', image);
-      if(image && !image.cancelled){
-        this.setState({ zoneImageUrl: image.uri });
-      }else{
-        this.setState({ zoneImageUrl: null });
-      }
-    }
-  }
-
-  selectPhoto = () => 
-    ActionSheet.show(
-      {
-        options: BUTTONS,
-        cancelButtonIndex: CANCEL_INDEX,
-        destructiveButtonIndex: DESTRUCTIVE_INDEX,
-        title: "Select a photo"
-      },
-      buttonIndex => {
-        switch (buttonIndex) {
-          case 0:
-            this.pickFromCamera();
-            break;
-          case 1:
-          this.pickFromGallery();
-            break;
-          default:
-            this.setState({ zoneImageUrl: null });
-            break;
-        }
-        console.log('buttonIndex', buttonIndex);
-      }
-    )
-  ;
-
   onAddData = (data) => {
     console.log('onAddData', data);
     let zoneList = this.state.zoneDataList;
-    console.log('zoneList before', zoneList.length);
-    zoneList = zoneList.filter(z => !(z.empty || z.addDataMode));
-    console.log('zoneList after filter', zoneList.length);
     zoneList = [...zoneList, data];
     this.showDialog(false);
     console.log('zoneList', zoneList.length);
@@ -160,44 +92,6 @@ export default class ZoneScreen extends React.Component {
         <View style={styles.contentContainer}>
           <ZoneListContainer onShowDialog={this.showDialog} zoneDataList={this.state.zoneDataList} />
           <ZoneAddContainer showAddZoneDialog={this.state.openAddZoneDialog} onAddData={this.onAddData} onShowDialog={this.showDialog}/>
-          {/* <Dialog
-          title="Create Zone"
-          animationType="fade"
-          contentStyle={
-              {
-                  alignItems: "center",
-                  justifyContent: "center",
-              }
-          }
-          visible={ this.state.openAddZoneDialog }
-        >
-          <View style={styles.imagePickerBox}>
-            <Thumbnail square style={styles.imagePicker} source={{uri: this.state.zoneImageUrl ? this.state.zoneImageUrl : "https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png" }} 
-                />
-            <TouchableOpacity style={styles.imagePickerBtnPanel} onPress={this.selectPhoto}>
-              <Icon name="camera" size={30} color="#FFF" style={styles.imagePickerBtn} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.formAddPanel} >
-            <Item >
-              <Label>Zone Name</Label>
-              <Input value={this.state.zoneName}
-                onChange={ (e) => this.setState({ zoneName: e.target.value }) }/>
-            </Item>
-            <Item >
-              <Label>Short label tag</Label>
-              <Input value={this.state.shortZoneName}
-                onChange={ (e) => this.setState({ shortZoneName: e.target.value }) }/>
-            </Item>
-          </View>
-          <Button full onPress={ () => this.showDialog(false) }>
-            <Text>Close</Text>
-          </Button>
-          <Button full success onPress={ () => this.doAddZone() } >
-            <Text>Save</Text>
-          </Button>
-          
-      </Dialog> */}
         </View>
       </View>
     );
