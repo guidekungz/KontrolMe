@@ -2,14 +2,14 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Footer, FooterTab, Button, Icon, Text as NBText } from 'native-base'
 
-import ZoneScreen from '../screens/ZoneScreen/ZoneHome';
+import ZoneNavigator from '../screens/ZoneScreen/ZoneNavigator';
 import SceneScreen from '../screens/SceneScreen/SceneHome';
 import ShareScreen from '../screens/ShareScreen/ShareHome';
 import SettingsScreen from '../screens/SettingScreen/SettingHome';
 import ZoneHomeContainer from '../containers/ZoneContainer/ZoneHomeContainer';
 
 export default createBottomTabNavigator({
-  Zone: { screen: ZoneHomeContainer },
+  Zone: { screen: ZoneNavigator },
   Scene: { screen: SceneScreen },
   Share: { screen: ShareScreen },
   Setting: { screen: SettingsScreen }

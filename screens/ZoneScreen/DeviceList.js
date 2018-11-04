@@ -25,55 +25,20 @@ const addEmptyData = (data) => {
 
 const numColumns = 3;
 
-const options = {
-  title: 'Select a picture',
-  takePhotoButtonTitle: 'Take a photo',
-  chooseFromLibraryButtonTitle: 'Choose from gallery',
-  quality: 1,
-  base64: true
-};
 
-export default class ZoneList extends React.Component {
+export default class DeviceList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      zoneDataList: props.zoneDataList
-    };
-    console.log('ZoneList props',props);
+    
+    console.log('DeviceList props',props);
   }
 
-  static navigationOptions = {
-    header: null,
-  };
-
-  
-
-  
-  // selectPhoto = () => {
-  //   ImagePicker.showImagePicker(options, (response) => {
-  //     console.log('Response = ', response);
-    
-  //     if (response.didCancel) {
-  //       console.log('User cancelled image picker');
-  //     } else if (response.error) {
-  //       console.log('ImagePicker Error: ', response.error);
-  //     } else {
-  //       const source = { uri: response.uri };
-    
-  //       // You can also display the image using data:
-  //       // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-    
-  //       this.setState({
-  //         avatarSource: source,
-  //       });
-  //     }
-  //   });
-  // };
 
   formatData = (data, numColumns) => {
     let dataFormat = [...data];
     dataFormat = addEmptyData(dataFormat);
+    console.log('formatData dataList', dataFormat.length);
     const numberOfFullRows = Math.floor(dataFormat.length / numColumns);
   
     let numberOfElementsLastRow = dataFormat.length - (numberOfFullRows * numColumns);
@@ -91,14 +56,14 @@ export default class ZoneList extends React.Component {
       return <View style={[styles.item, styles.itemInvisible]} />;
     }else if( item.addDataMode === true ){
       return <TouchableOpacity style={styles.item} onPress={()=> {
-          this.props.onShowDialog(true);
+          //this.props.onShowDialog(true);
         }}>
         <Text style={styles.itemText}>+</Text>
       </TouchableOpacity>
     }
     return (
       <TouchableOpacity style={styles.item} onPress={() => {
-        this.props.onPressData(item);
+        //this.props.onPressData(item);
       }} >
         <Thumbnail large square source={{uri: item.image}}></Thumbnail>
         <Text style={styles.itemText}>{item.shortName}</Text>
@@ -108,18 +73,14 @@ export default class ZoneList extends React.Component {
   
 
   shouldComponentUpdate(nextProps, nextState) {
-    let result = this.state.zoneDataList != nextState.zoneDataList;
-    console.log('ZoneList shouldComponentUpdate', result);
-    // return this.state.zoneDataList != nextState.zoneDataList;
     return true;
   }
 
   render() {
-    console.log('render this.props.zoneDataList', this.props.zoneDataList.length);
     return (
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.contentContainer}>
           <FlatList
-            data={this.formatData(this.props.zoneDataList, numColumns)}
+            data={this.formatData(this.props.dataList, numColumns)}
             style={styles.container}
             renderItem={this.renderItem}
             numColumns={numColumns}

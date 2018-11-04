@@ -20,7 +20,7 @@ const BUTTONS = ["Take a photo", "Choose from gallery", "Cancel"];
 const DESTRUCTIVE_INDEX = 1;
 const CANCEL_INDEX = 2;
 
-export default class ZoneAddDialog extends React.Component {
+export default class DeviceAddDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,28 +29,28 @@ export default class ZoneAddDialog extends React.Component {
       zoneImageUrl: '',
       showAddZoneDialog: props.showAddZoneDialog
     };
-    console.log('ZoneAddDialog props', props);
+    console.log('DeviceAddDialog props', props);
   }
 
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('ZoneAddDialog shouldComponentUpdate');
+    console.log('DeviceAddDialog shouldComponentUpdate');
     return true;
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('ZoneAddDialog getSnapshotBeforeUpdate prevProps', prevProps);
-    console.log('ZoneAddDialog getSnapshotBeforeUpdate prevState', prevState);
+    console.log('DeviceAddDialog getSnapshotBeforeUpdate prevProps', prevProps);
+    console.log('DeviceAddDialog getSnapshotBeforeUpdate prevState', prevState);
     return null;
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('ZoneAddDialog componentDidUpdate');
-    console.log('ZoneAddDialog prevProps',prevProps);
-    console.log('ZoneAddDialog prevState',prevState);
-    console.log('ZoneAddDialog this.state',this.state);
+    console.log('DeviceAddDialog componentDidUpdate');
+    console.log('DeviceAddDialog prevProps',prevProps);
+    console.log('DeviceAddDialog prevState',prevState);
+    console.log('DeviceAddDialog this.state',this.state);
   }
   componentWillUnmount() {
-    console.log('ZoneAddDialog componentWillUnmount');
+    console.log('DeviceAddDialog componentWillUnmount');
   }
 
   pickFromGallery = async () => {
@@ -127,7 +127,6 @@ export default class ZoneAddDialog extends React.Component {
     data.name = this.state.zoneName;
     data.shortName = this.state.shortZoneName;
     data.image = this.state.zoneImageUrl;
-    data.devices = [];
     console.log('doAddZone data', data);
     console.log('doAddZone state', this.state);
     this.setState({

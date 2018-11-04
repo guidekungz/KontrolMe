@@ -13,11 +13,12 @@ import ZoneListContainer from '../../containers/ZoneContainer/ZoneListContainer'
 import ZoneAddContainer from '../../containers/ZoneContainer/ZoneAddContainer';
 import ZoneAddDialog from '../../screens/ZoneScreen/ZoneAddDialog';
 
+import { HeaderApp } from '../../components/HeaderApp';
+
 import { Header, Body, Thumbnail, Icon, Text, Item, Label, Input, Button, ActionSheet } from 'native-base';
 
-import { ImagePicker, Permissions } from 'expo';
 
-import { Dialog } from 'react-native-simple-dialogs';
+
 
 const data = [
   {
@@ -32,6 +33,9 @@ const data = [
 
 
 export default class ZoneScreen extends React.Component {
+  static navigationOptions = {
+    title : "Zone"
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -72,6 +76,11 @@ export default class ZoneScreen extends React.Component {
     this.setState({openAddZoneDialog: flag});
   };
 
+  showDevice = (data) => {
+    // console.log('showDevice', data);
+    this.props.navigation.navigate('ZoneDevices', { deviceData : data, test : 'Test0000000'});
+  };
+
   onAddData = (data) => {
     console.log('onAddData', data);
     let zoneList = this.state.zoneDataList;
@@ -79,19 +88,16 @@ export default class ZoneScreen extends React.Component {
     this.showDialog(false);
     console.log('zoneList', zoneList.length);
     this.setState({zoneDataList: zoneList});
+    this.showDevice(data);
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Header style={styles.header}>
-          <Body style={styles.headerBody}>
-            <Thumbnail large source={require('../../assets/images/robot-prod.png')} style={styles.profilePicture} />
-          </Body>
-        </Header>
+        <HeaderApp uri="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" />
         <View style={styles.contentContainer}>
-          <ZoneListContainer onShowDialog={this.showDialog} zoneDataList={this.state.zoneDataList} />
-          <ZoneAddContainer showAddZoneDialog={this.state.openAddZoneDialog} onAddData={this.onAddData} onShowDialog={this.showDialog}/>
+          <ZoneListContainer onShowDialog={this.showDialog} onPressData={this.showDevice} zoneDataList={this.state.zoneDataList} />
+          <ZoneAddContainer showAddZoneDialog={this.state.openAddZoneDialog} onAddData={this.onAddData} onShowDialog={this.showDialog} />
         </View>
       </View>
     );
@@ -107,24 +113,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  profilePicture:{
-    height: 150,
-    width: 150,
-    borderRadius: 150/2,
-    marginTop: 90,
-  },
-  header: {
-    backgroundColor: '#2699FB',
-    height: (Dimensions.get('window').height * (0.25)),
-    paddingTop: 25,
-    
-  },
-  headerBody: {
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center'
-  }, 
   contentContainer: {
     paddingTop: 50,
     flex: 1,

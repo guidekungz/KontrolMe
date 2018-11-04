@@ -7,7 +7,7 @@ export class HeaderApp extends React.Component {
     return (
       <Header style={styles.header}>
         <Body style={styles.headerBody}>
-          <Thumbnail large source={require('../assets/images/robot-prod.png')} style={styles.profilePicture} />
+          <Thumbnail large source={{uri :this.props.uri}} style={styles.picture} />
         </Body>
       </Header>
     );
@@ -16,15 +16,15 @@ export class HeaderApp extends React.Component {
 
 const styles = StyleSheet.create({
 
-  profilePicture:{
+  picture:{
     height: 150,
     width: 150,
     borderRadius: 150/2,
-    marginTop: 90,
+    marginTop: 50,
   },
   header: {
-    height: (Dimensions.get('window').height * (0.25)),
-    paddingTop: 25,
+    height: (Dimensions.get('window').height * (0.15)),
+    backgroundColor: '#2699FB'
     
   },
   headerBody: {
