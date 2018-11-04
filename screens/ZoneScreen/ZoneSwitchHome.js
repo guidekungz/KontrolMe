@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
 import { HeaderApp } from '../../components/HeaderApp';
-import DeviceList from './DeviceList';
+import SwitchList from './SwitchList';
 
-export default class ZoneDeviceHome extends Component {
+export default class ZoneSwitchHome extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const {state} = navigation;
@@ -17,29 +17,24 @@ export default class ZoneDeviceHome extends Component {
     super(props);
     const { navigation } = props;
     const {setParams, getParam} = navigation;
-    const deviceData = getParam('deviceData');
-    setParams({ title: deviceData.name });
+    const switchData = getParam('switchData');
+    setParams({ title: switchData.name });
     this.state = {
-      deviceData: deviceData
+      switchData: switchData
     };
 
     // let zoneList = this.state.zoneDataList;
-    console.log('ZoneDeviceHome constructor');
+    console.log('ZoneSwitchHome constructor');
     
     
   }
 
-  showSwitch = (data) => {
-    // console.log('showDevice', data);
-    this.props.navigation.navigate('ZoneSwitchs', { switchData : data});
-  };
-
   render() {
     return (
       <View style={styles.container}>
-        <HeaderApp uri={this.state.deviceData.image} />
+        <HeaderApp uri={this.state.switchData.image} />
         <View style={styles.contentContainer}>
-          <DeviceList dataList={this.state.deviceData.devices} onPressData={this.showSwitch} />
+          <SwitchList dataList={this.state.switchData.switchs} />
         </View>
       </View>
     )

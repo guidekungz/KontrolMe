@@ -12,32 +12,23 @@ import {  Thumbnail, ActionSheet, Text } from 'native-base';
 
 
 
-const addEmptyData = (data) => {
-  let emptyData = {
-    addDataMode : true,
-    key : 0
-  };
-  data.push(emptyData);
-  return data;
-}
 
 
 
 const numColumns = 3;
 
 
-export default class DeviceList extends React.Component {
+export default class SwitchList extends React.Component {
 
   constructor(props) {
     super(props);
     
-    console.log('DeviceList props',props);
+    console.log('SwitchList props',props);
   }
 
 
   formatData = (data, numColumns) => {
     let dataFormat = [...data];
-    dataFormat = addEmptyData(dataFormat);
     console.log('formatData dataList', dataFormat.length);
     const numberOfFullRows = Math.floor(dataFormat.length / numColumns);
   
@@ -63,7 +54,7 @@ export default class DeviceList extends React.Component {
     }
     return (
       <TouchableOpacity style={styles.item} onPress={() => {
-        this.props.onPressData(item);
+        //this.props.onPressData(item);
       }} >
         <Thumbnail large square source={{uri: item.image}}></Thumbnail>
         <Text style={styles.itemText}>{item.shortName}</Text>

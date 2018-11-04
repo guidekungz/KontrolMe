@@ -2,10 +2,12 @@ import { createStackNavigator } from 'react-navigation';
 
 import ZoneHomeContainer from '../../containers/ZoneContainer/ZoneHomeContainer';
 import ZoneDeviceHome from './ZoneDeviceHome';
+import ZoneSwitchHome from './ZoneSwitchHome';
 
 export default createStackNavigator({
     ZoneHome: { screen: ZoneHomeContainer },
-    ZoneDevices: { screen: ZoneDeviceHome }
+    ZoneDevices: { screen: ZoneDeviceHome },
+    ZoneSwitchs: { screen: ZoneSwitchHome }
 },
 {
   initialRouteName: 'ZoneHome',
