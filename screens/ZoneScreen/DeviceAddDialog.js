@@ -20,10 +20,6 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 import DeviceNavigator from './DeviceNavigator';
 
-import GenerateForm from 'react-native-form-builder';
-
-import PasswordInputText from 'react-native-hide-show-password-input';
-
 
 const BUTTONS = ["Take a photo", "Choose from gallery", "Cancel"];
 const DESTRUCTIVE_INDEX = 1;
