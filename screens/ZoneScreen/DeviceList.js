@@ -56,7 +56,7 @@ export default class DeviceList extends React.Component {
       return <View style={[styles.item, styles.itemInvisible]} />;
     }else if( item.addDataMode === true ){
       return <TouchableOpacity style={styles.item} onPress={()=> {
-          //this.props.onShowDialog(true);
+          this.props.onShowDialog(true);
         }}>
         <Text style={styles.itemText}>+</Text>
       </TouchableOpacity>

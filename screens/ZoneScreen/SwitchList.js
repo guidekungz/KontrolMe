@@ -8,14 +8,14 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import {  Thumbnail, ActionSheet, Text } from 'native-base';
+import {  Thumbnail, ActionSheet, Text, Icon } from 'native-base';
 
 
 
 
 
 
-const numColumns = 3;
+const numColumns = 2;
 
 
 export default class SwitchList extends React.Component {
@@ -56,8 +56,7 @@ export default class SwitchList extends React.Component {
       <TouchableOpacity style={styles.item} onPress={() => {
         //this.props.onPressData(item);
       }} >
-        <Thumbnail large square source={{uri: item.image}}></Thumbnail>
-        <Text style={styles.itemText}>{item.shortName}</Text>
+        <Icon name='power' style={{fontSize:100}} />
       </TouchableOpacity>
     );
   };
@@ -71,7 +70,7 @@ export default class SwitchList extends React.Component {
     return (
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.contentContainer}>
           <FlatList
-            data={this.formatData(this.props.dataList, numColumns)}
+            data={this.props.dataList}
             style={styles.container}
             renderItem={this.renderItem}
             numColumns={numColumns}
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
-    backgroundColor: '#F3F3F3',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

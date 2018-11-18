@@ -33,6 +33,8 @@ const data = [
       "name": "ประตูใหญ่",
       "shortName": "นบ01",
       "image": "https://www.stainlessprice.com/wp-content/uploads/2015/12/stainlessgate247_index-320x165.jpg",
+      "model": "Test1",
+      "serial": "test1",
       "switchs": [
         {
           "key": 1,
@@ -46,6 +48,8 @@ const data = [
       "name": "ไฟรั้วบ้าน",
       "shortName": "นบ02",
       "image": "https://cb.lnwfile.com/_/cb/_raw/r4/pr/em.jpg",
+      "model": "Test2",
+      "serial": "test2",
       "switchs": [
         {
           "key": 1,
