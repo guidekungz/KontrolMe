@@ -66,7 +66,7 @@ export default class DeviceList extends React.Component {
         this.props.onPressData(item);
       }} >
         <Thumbnail large square source={{uri: item.image}}></Thumbnail>
-        <Text style={styles.itemText}>{item.shortName}</Text>
+        <Text style={styles.itemText}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     color: '#616161',
-    fontSize: 36
+    fontSize: 28
   },
 });

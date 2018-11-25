@@ -4,12 +4,11 @@ import {
   Dimensions,
   View,
   TouchableOpacity,
-  Modal,
-  Picker
+  Modal
 } from 'react-native';
 
 
-import { Thumbnail, Icon, Text, Item, Label, Input, Button, ActionSheet, Container, Header, Content, Form, Left, Body, Right, Title, Footer  } from 'native-base';
+import { Thumbnail, Icon, Text, Item, Label, Input, Button, ActionSheet, Container, Header, Content, Form, Left, Body, Right, Title, Footer, Picker  } from 'native-base';
 
 import { Dialog } from 'react-native-simple-dialogs';
 
@@ -33,7 +32,8 @@ const TEMP_DEVICE = [
     {
       "key": 1,
       "id": 1,
-      "status": "on"
+      "status": "on",
+      "name":"sw1"
     },
     {
       "key": 2,
@@ -255,11 +255,11 @@ export default class DeviceAddDialog extends React.Component {
 
   renderButton = () => {
     if(this.state.step < 3){
-      return <Button  full onPress={ () => this.onNextStep() }>
+      return <Button  full onPress={ () => this.onNextStep() } style={{backgroundColor: '#2699FB'}}>
         <Text>Next</Text>
       </Button>      
     } else {
-      return <Button  full onPress={ () => this.doAddDevice() } >
+      return <Button  full onPress={ () => this.doAddDevice() } style={{backgroundColor: '#2699FB'}} >
         <Text>Save</Text>
       </Button>
     }
@@ -403,7 +403,7 @@ export default class DeviceAddDialog extends React.Component {
                       height: 500,
                       backgroundColor: '#FFF'
                       }}>
-                <Header>
+                <Header style={{backgroundColor: '#2699FB'}}>
                   <Body>
                     <Title>Add Device</Title>
                   </Body>
@@ -421,7 +421,7 @@ export default class DeviceAddDialog extends React.Component {
                 /> */}
                 <this.renderStep />
                 {/* <DeviceNavigator openAddZoneDialog={this.openAddZoneDialog} /> */}
-                <Footer>
+                <Footer style={{backgroundColor: '#2699FB'}}>
                   <Body>
                     <this.renderButton />
                   </Body>

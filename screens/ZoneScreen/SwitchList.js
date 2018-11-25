@@ -56,7 +56,8 @@ export default class SwitchList extends React.Component {
       <TouchableOpacity style={styles.item} onPress={() => {
         //this.props.onPressData(item);
       }} >
-        <Icon name='power' style={{fontSize:100}} />
+        <Icon name='power' style={{fontSize:70}} />
+        <Text>{item.name}</Text>
       </TouchableOpacity>
     );
   };
@@ -99,13 +100,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     margin: 8,
-    height: (Dimensions.get('window').width / numColumns) - (numColumns*8), // approximate a square
+    height: (((Dimensions.get('window').width * 0.6) / numColumns) - (numColumns*8)) , // approximate a square
+    borderWidth: 1,
+    borderColor: '#d6d7da',
   },
   itemInvisible: {
     backgroundColor: 'transparent',
   },
   itemText: {
     color: '#616161',
-    fontSize: 36
+    fontSize: 28
   },
 });

@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native'
 
-import { HeaderApp } from '../../components/HeaderApp';
-import DeviceList from './DeviceList';
+import { HeaderAppEdit } from '../../components/HeaderAppEdit';
+import DeviceListEdit from './DeviceListEdit';
 import DeviceAddDialog from './DeviceAddDialog';
-import { Icon } from 'native-base';
+import { Icon, Input } from 'native-base';
 
 
 
-export default class ZoneDeviceHome extends Component {
+export default class ZoneDeviceEdit extends Component {
 
   static navigationOptions = ({ navigation }) => {
-    const {state} = navigation;
+    const {state, getParam, setParams} = navigation;
+    const deviceData = getParam('deviceData');
+    const title = getParam('title');
     return {
-      title: `${state.params.title}`,
+      headerTitle: 
+        <Input value={title} onChangeText={ (text) => setParams({ title: text }) } />,
       headerRight:
-        <TouchableOpacity onPress={() => (navigation.navigate('ZoneDevicesEdit', { deviceData : navigation.getParam('deviceData')}))}>
-          <Icon style={styles.titleEditBtn} type="FontAwesome" name="pencil"></Icon>
+        <TouchableOpacity>
+          <Icon style={styles.titleEditBtn} type="FontAwesome" name="save"></Icon>
         </TouchableOpacity>
     };
   };
@@ -37,11 +40,6 @@ export default class ZoneDeviceHome extends Component {
     
     
   }
-
-  showDeviceEdit = () => {
-    console.log('showDeviceEdit');
-    // this.props.navigation.navigate('ZoneDevicesEdit', { deviceData : data});
-  };
 
   showSwitch = (data) => {
     // console.log('showDevice', data);
@@ -71,10 +69,10 @@ export default class ZoneDeviceHome extends Component {
     
     return (
       <View style={styles.container}>
-        <HeaderApp uri={this.state.deviceData.image} />
+        <HeaderAppEdit uri={this.state.deviceData.image} />
         <View style={styles.contentContainer}>
         
-          <DeviceList dataList={this.state.deviceData.devices} onPressData={this.showSwitch} onShowDialog={this.showDialog} />
+          <DeviceListEdit dataList={this.state.deviceData.devices} onPressData={this.showSwitch} onShowDialog={this.showDialog} />
           <DeviceAddDialog showDialog={this.state.openDialog} onShowDialog={this.showDialog} onAddData={this.onAddData} />
           
         </View>

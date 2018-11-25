@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { HeaderApp } from '../../components/HeaderApp';
 import SwitchList from './SwitchList';
+
+import {Button, Icon, Text, Content, Footer } from 'native-base';
 
 export default class ZoneSwitchHome extends Component {
 
@@ -33,9 +35,19 @@ export default class ZoneSwitchHome extends Component {
     return (
       <View style={styles.container}>
         <HeaderApp uri={this.state.switchData.image} />
+        <View style={{margin:5,paddingTop: 40}}>
+          <Text>Model : {this.state.switchData.model}</Text>
+          <Text>Serial : {this.state.switchData.serial}</Text>
+        </View>
         <View style={styles.contentContainer}>
           <SwitchList dataList={this.state.switchData.switchs} />
         </View>
+        <Footer style={{backgroundColor: '#fff'}}>
+          <Button light style={styles.btnBottom}><Text>Scheduler</Text></Button>
+          <Button light style={styles.btnBottom}><Text>Timer</Text></Button>
+        </Footer>
+        
+        
       </View>
     )
   }
@@ -48,7 +60,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   contentContainer: {
-    paddingTop: 50,
+    paddingTop: 0,
     flex: 1,
+  },
+  btnBottom: {
+    margin: 5
   }
 });

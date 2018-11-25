@@ -40,7 +40,8 @@ const data = [
         {
           "key": 1,
           "id": 1,
-          "status": "on"
+          "status": "on",
+          "name":"SW1"
         }
       ]
     },{
@@ -55,12 +56,26 @@ const data = [
         {
           "key": 1,
           "id": 1,
-          "status": "on"
+          "status": "on",
+          "name":"SW1"
         },
         {
           "key": 2,
           "id": 2,
-          "status": "on"
+          "status": "on",
+          "name":"SW2"
+        },
+        {
+          "key": 3,
+          "id": 3,
+          "status": "on",
+          "name":"SW3"
+        },
+        {
+          "key": 4,
+          "id": 4,
+          "status": "on",
+          "name":"SW4"
         }
       ]
     }]
