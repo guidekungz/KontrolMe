@@ -10,12 +10,8 @@ import {
 
 import { Thumbnail, Icon, Text, Item, Label, Input, Button, ActionSheet, Container, Header, Content, Form, Left, Body, Right, Title, Footer, Picker  } from 'native-base';
 
-import { Dialog } from 'react-native-simple-dialogs';
 
 import { ImagePicker, Permissions } from 'expo';
-
-import { Col, Row, Grid } from "react-native-easy-grid";
-
 
 import DeviceNavigator from './DeviceNavigator';
 
